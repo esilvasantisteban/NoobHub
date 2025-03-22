@@ -18,7 +18,7 @@
 const net = require('net');
 
 const cfg = {
-  port: 1337,
+  port: process.env.PORT || 1337,
   wsPort: process.env.WS_PORT || 2337, // comment out if you don't need websocket bridge
   buffer_size: 1024 * 16, // buffer allocated per each socket client
   sendOwnMessagesBack: true // if disabled, clients don't get their own messages back
