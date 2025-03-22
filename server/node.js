@@ -18,7 +18,7 @@
 const net = require('net');
 
 const cfg = {
-  port: process.env.PORT || 1337,
+  port: 1337,
   wsPort: process.env.WS_PORT || 2337, // comment out if you don't need websocket bridge
   buffer_size: 1024 * 16, // buffer allocated per each socket client
   sendOwnMessagesBack: true // if disabled, clients don't get their own messages back
@@ -79,6 +79,7 @@ server.on('connection', (socket) => {
       socket.buffer.len = 0; // trimming buffer
       return false;
     }
+    console.log('WebSocket message received: '+ dataRaw);
 
     socket.buffer.len += dataRaw.copy(socket.buffer, socket.buffer.len); // keeping track of how much data we have in buffer
 
